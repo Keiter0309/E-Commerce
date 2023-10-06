@@ -10,7 +10,9 @@ mongoose.set('strictQuery',false);
 app.use(express.static(path.join(__dirname, "first-app")))
 
 app.use(cors({
-    origin: "http://localhost:4200"
+    origin: "https://nordics.onrender.com/",
+    methods: ["GET", "POST"],
+    credentials: true,
 }));
 
 app.listen(port, (err)=>{
