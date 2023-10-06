@@ -41,8 +41,9 @@ module.exports.loginUserDBService = (userDetails) => {
                     const isPasswordValid = decryptedPassword === userDetails.password;
 
                     if (isPasswordValid) {
-                        const username = userDetails.username;
-                        resolve({ status: true, message: "User Validated Successfully" });
+                        const username = result.username;
+                        console.log(username);
+                        resolve({ status: true, message: "User Validated Successfully", username });
                         console.log("Successful login for user:", result.email);
                     } else {
                         reject({ status: false, message: "Incorrect password" });
@@ -58,4 +59,4 @@ module.exports.loginUserDBService = (userDetails) => {
                 console.error("Error during login:", err);
             });
     });
-};
+}
