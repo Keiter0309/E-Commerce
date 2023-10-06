@@ -3,10 +3,6 @@ const key = '123456789trytryrtyr';
 const encryptor = require('simple-encryptor')(key);
 
 module.exports.createUserDBService = (userDetails) => {
-    console.log("userDetails.password:", userDetails.password);
-    console.log("encryptor:", encryptor);
-    console.log("userDetails.matchPass:", userDetails.matchPass);
-    console.log("encryptor:", encryptor)
 
     if (typeof userDetails.password === 'string') {
         const encryptedPassword = encryptor.encrypt(userDetails.password);
@@ -43,8 +39,6 @@ module.exports.loginUserDBService = (userDetails) => {
                     const decryptedPassword = encryptor.decrypt(result.password);
                     console.log(userDetails.password)
                     const isPasswordValid = decryptedPassword === userDetails.password;
-                    console.log("Decrypted Password:", decryptedPassword);
-                    console.log("Password Comparison Result:", isPasswordValid);
 
                     if (isPasswordValid) {
                         resolve({ status: true, message: "User Validated Successfully" });
